@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#121212">
+  <meta name="description" content="Partez à la rencontre des ninjas de Konoha et des personnages de Naruto.">
+  <title>Konoha — Le monde des shinobi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#accueil" aria-label="Konoha, accueil"><span class="brand-mark">木</span><span>KONOHA<span class="brand-dot">.</span></span></a>
+    <nav aria-label="Navigation principale"><a class="nav-link active" href="#personnages">Personnages</a><a class="nav-link" href="#univers">L’univers</a></nav>
+    <button class="login-button" id="open-auth">Espace ninja <span aria-hidden="true">↗</span></button>
+  </header>
+
+  <main>
+    <section class="hero" id="accueil">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="live-dot"></span> CHRONIQUES DU MONDE SHINOBI</p>
+        <h1>Chaque ninja<br>porte <span>une histoire.</span></h1>
+        <p class="hero-description">Des rêves, des rivalités, une volonté qui ne cède jamais. Rencontrez les visages qui ont façonné une légende.</p>
+        <a class="primary-button" href="#personnages">Explorer les personnages <span aria-hidden="true">↓</span></a>
+        <div class="hero-meta"><div class="avatar-stack" aria-hidden="true"><i>🍥</i><i>⚡</i><i>🌸</i><i>🐺</i></div><span><b>9 shinobi</b><br>à découvrir</span></div>
+      </div>
+      <div class="hero-art" aria-label="Illustration graphique inspirée de Konoha">
+        <div class="sun-disc"></div><div class="hero-kanji">忍</div><div class="hero-ring ring-one"></div><div class="hero-ring ring-two"></div>
+        <div class="hero-caption"><span>木ノ葉隠れ</span><span>VILLAGE CACHÉ DE LA FEUILLE</span></div>
+        <div class="hero-number">01 <i>/</i> 09</div>
+      </div>
+      <div class="vertical-note">HÉRITAGE · COURAGE · VOLONTÉ</div>
+    </section>
+
+    <section class="roster section-wrap" id="personnages">
+      <div class="section-heading"><div><p class="eyebrow">LES VISAGES DE LA LÉGENDE</p><h2>Choisis ton <span>shinobi.</span></h2></div><p class="section-note">Un village. Des destins. Une volonté<br>qui traverse les générations.</p></div>
+      <div class="filters" role="group" aria-label="Filtrer les personnages">
+        <button class="filter active" data-filter="Tous">Tous <span>09</span></button><button class="filter" data-filter="Konoha">Konoha</button><button class="filter" data-filter="Équipe 7">Équipe 7</button><button class="filter" data-filter="Légendes">Légendes</button>
+        <label class="search-box"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Chercher un ninja…" aria-label="Chercher un personnage"></label>
+      </div>
+      <div class="character-grid" id="character-grid" aria-live="polite"></div>
+      <div class="empty-state" id="empty-state" hidden>Aucun shinobi ne correspond à cette recherche.</div>
+    </section>
+
+    <section class="quote-section" id="univers"><div class="quote-symbol">“</div><blockquote>Ce n’est pas le visage qui fait le ninja.<br><span>C’est ce qu’il choisit de protéger.</span></blockquote><p>— LA VOLONTÉ DU FEU</p><div class="quote-mark">火</div></section>
+  </main>
+
+  <footer><a class="brand" href="#accueil"><span class="brand-mark">木</span><span>KONOHA<span class="brand-dot">.</span></span></a><p>Un hommage de fan, créé avec passion.</p><a href="/api/docs" target="_blank" rel="noreferrer">API & documentation ↗</a><small>Naruto et ses personnages appartiennent à leurs ayants droit. Site non officiel, sans affiliation.</small></footer>
+
+  <dialog class="auth-dialog" id="auth-dialog" aria-labelledby="auth-title">
+    <form method="dialog"><button class="dialog-close" aria-label="Fermer">×</button></form>
+    <div class="dialog-emblem">木</div><p class="eyebrow">ACCÈS AU VILLAGE</p><h2 id="auth-title">Espace ninja</h2><p class="dialog-copy">Crée ton compte ou connecte-toi pour rejoindre la communauté.</p>
+    <div class="auth-tabs"><button class="auth-tab active" data-mode="register">Créer un compte</button><button class="auth-tab" data-mode="login">Connexion</button></div>
+    <form id="auth-form" class="auth-form" novalidate>
+      <label id="username-field">Nom de ninja<input name="username" autocomplete="username" minlength="3" maxlength="32" placeholder="ex. shikamaru" required></label>
+      <label>Adresse e-mail<input name="email" type="email" autocomplete="email" maxlength="254" placeholder="ninja@konoha.jp" required></label>
+      <label>Mot de passe<input name="password" type="password" autocomplete="new-password" minlength="12" maxlength="72" placeholder="12 caractères minimum" required></label>
+      <p class="form-message" id="form-message" role="status"></p><button class="primary-button submit-button" type="submit">Créer mon compte <span>→</span></button>
+    </form>
+    <div class="account-panel" id="account-panel" hidden><p id="account-greeting"></p><button class="logout-button" id="logout-button">Se déconnecter</button></div>
+  </dialog>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
